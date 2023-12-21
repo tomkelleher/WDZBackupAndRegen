@@ -21,7 +21,7 @@ NEW_FILE_NAME="${FILE_TO_DOWNLOAD%.*}-${CURRENT_DATE}.zip"
 # Start a detached screen session
 screen -dmS $SCREEN_SESSION
 
-# Run lftp command inside the screen session
-screen -S $SCREEN_SESSION -X stuff "lftp -u $USERNAME,$PASSWORD $SERVER_IP -e 'get $FILE_TO_DOWNLOAD -o ${SAVE_DIR}/${NEW_FILE_NAME}; bye'\n"
+# Run lftp command with explicit FTPS inside the screen session
+screen -S $SCREEN_SESSION -X stuff "lftp -u $USERNAME,$PASSWORD $SERVER_IP -e 'set ssl:force true; set ftp:ssl-protect-data true; get $FILE_TO_DOWNLOAD -o ${SAVE_DIR}/${NEW_FILE_NAME}; bye'\\n"
 
 echo "File download initiated in screen session: $SCREEN_SESSION"
