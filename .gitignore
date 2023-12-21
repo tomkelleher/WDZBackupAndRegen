@@ -1,0 +1,9 @@
+# Ignore configuration files
+world-backup/config.cfg
+
+# Ignore OS generated files
+.DS_Store  # for macOS
+Thumbs.db  # for Windows
+
+# Ignore IDE-specific files (uncomment if you use these IDEs)
+.vscode/
