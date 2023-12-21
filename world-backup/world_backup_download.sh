@@ -1,18 +1,16 @@
 #!/bin/bash
 
-# Define screen session name
-SCREEN_SESSION="ftp_download"
+# Path to the configuration file
+CONFIG_FILE="config.cfg"
 
-# FTP credentials and server IP
-USERNAME="yourUsername"
-PASSWORD="yourPassword"
-SERVER_IP="server-ip"
+# Check if configuration file exists
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Configuration file not found: $CONFIG_FILE"
+    exit 1
+fi
 
-# Directory to save the downloaded file
-SAVE_DIR="/path/to/save/directory"
-
-# File to download
-FILE_TO_DOWNLOAD="world.zip"
+# Source the configuration file
+source "$CONFIG_FILE"
 
 # Generate the current date in the format YYYYMMDD-HHMMSS
 CURRENT_DATE=$(date +"%Y%m%d-%H%M%S")
